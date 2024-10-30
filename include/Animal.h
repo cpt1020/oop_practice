@@ -39,7 +39,7 @@ public:
     string get_breeds() const;
     Date get_dob() const;
 
-    virtual void say_something() const;
+    virtual void say_something() const = 0;
 
 };
 

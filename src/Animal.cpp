@@ -44,9 +44,9 @@ Date Animal::get_dob() const {
     return this->dob;
 }
 
-void Animal::say_something() const {
-    cout << "Hello, I'm an animal and my name is " << name << endl;
-}
+// void Animal::say_something() const {
+//     cout << "Hello, I'm an animal and my name is " << name << endl;
+// }
 
 void Animal::show_owner() {
     if (owner == nullptr) {
