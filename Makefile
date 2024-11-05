@@ -4,7 +4,7 @@ SOURCE_DIR = src
 BUILD_DIR = build
 EXECUTABLE_NAME = main
 
-CXX_STANDARD = c++20
+CXX_STANDARD = c++17
 CXX = g++
 CXXFLAGS = -std=$(CXX_STANDARD)
 CPPFLAGS = -I $(INCLUDE_DIR)
@@ -12,8 +12,8 @@ CPPFLAGS = -I $(INCLUDE_DIR)
 CXX_COMPILER_CALL = $(CXX) $(CXXFLAGS) $(CPPFLAGS)
 
 # CXX_SOURCES = $(wildcard $(SOURCE_DIR)/*.cpp)
-CXX_SOURCES = $(wildcard $(SOURCE_DIR)/*.cpp) main.cpp
-CXX_OBJECTS = $(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(CXX_SOURCES))
+CXX_SOURCES = $(wildcard $(SOURCE_DIR)/*.cc) main.cc
+CXX_OBJECTS = $(patsubst $(SOURCE_DIR)/%.cc, $(BUILD_DIR)/%.o, $(CXX_SOURCES))
 
 ##############
 ## TARGETS  ##
@@ -36,7 +36,7 @@ clean:
 ##############
 ## PATTERNS ##
 ##############
-$(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.cpp
+$(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.cc
 	$(CXX_COMPILER_CALL) -c $< -o $@
 
 ###########

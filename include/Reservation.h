@@ -4,28 +4,26 @@
 #include "Animal.h"
 #include "Vet.h"
 #include <iostream>
-using namespace std;
+#include <memory>
 
 class Animal;
 
 class Reservation {
-    friend ostream &operator<<(ostream &os, const Reservation &obj);
+    friend std::ostream &operator<<(std::ostream &os, const Reservation &obj);
     
 private:
-    Date date;
-    string clinic;  // morning/afternoon/evening
-    Animal *pet;
-    Vet *vet;
+    Date date_;
+    std::string clinic_;  // morning/afternoon/evening
+    std::shared_ptr<Animal> pet_;
+    std::shared_ptr<Vet> vet_;
 
 public:
+    Reservation(Date d_val, std::string &clinic_val, std::shared_ptr<Animal> pet_val, std::shared_ptr<Vet> vet_val);
 
-    Reservation(Date d_val, string clinic_val, Animal *pet_val, Vet *vet_val);
-
-    Date get_date() const;
-    string get_clinic() const;
-    string get_pet_name() const;
-    string get_vet_name() const;
-
+    Date GetDate() const;
+    std::string GetClinic() const;
+    std::string GetPetName() const;
+    std::string GetVetName() const;
 };
 
 #endif

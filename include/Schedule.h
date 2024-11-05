@@ -3,23 +3,22 @@
 #include <vector>
 #include <tuple>
 #include <string>
+#include <memory>
 #include "Date.h"
 #include "Vet.h"
-using namespace std;
 
 class Schedule {
-    friend ostream &operator<<(ostream &os, const Schedule &obj);
+    friend std::ostream &operator<<(std::ostream &os, const Schedule &obj);
 
 private:
-    vector<tuple<Date, string, Vet*, Vet*, Vet*>> weekly_schedule;
+    std::vector<std::tuple<Date, std::string, std::shared_ptr<Vet>, std::shared_ptr<Vet>, std::shared_ptr<Vet>>> weekly_schedule_;
 
 public:
-    Schedule(vector<Vet *> &vets);
-    ~Schedule() {};
+    Schedule(std::vector<std::shared_ptr<Vet>> &vets);
 
-    void schedule_initialization(vector<Vet *> &vets);
-    Vet* get_vet(unsigned short &month, unsigned short &day, string &clinic) const;
-    Date get_date(unsigned short &month, unsigned short &day);
+    void InitializeSchedule(std::vector<std::shared_ptr<Vet>> &vets);
+    std::shared_ptr<Vet> GetVet(unsigned short &month, unsigned short &day, std::string &clinic) const;
+    Date GetDate(unsigned short &month, unsigned short &day);
 
 };
 

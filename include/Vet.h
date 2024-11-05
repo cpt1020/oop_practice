@@ -6,31 +6,27 @@ using namespace std;
 
 class Vet {
 private:
-    string first_name;
-    string last_name;
+    std::string first_name_;
+    std::string last_name_;
 
-    const int specialty_num {7};
-    const int species_num {3};
-    vector<int> specialty;
-    // Internal Medicine, Surgery, Oncology, Opthalamology, Neurology, Orthopedics, Cardiology
-    vector<int> species;
-    // dog, cat, exotic animal
-
-
+    const int kSpecialtyNum_ {7};
+    std::vector<int> specialty_; // Internal Medicine, Surgery, Oncology, Opthalamology, Neurology, Orthopedics, Cardiology
+    
+    const int kSpeciesNum_ {3};
+    std::vector<int> species_; // dog, cat, exotic animal
+    
 public:
+    Vet(std::string fname, std::string lname);
 
-    Vet(string fname, string lname);
-
-    string get_fname() const;
-    string get_lname() const;
-    string get_full_name() const;
-    int get_species_num() const;
-    int get_specialty_num() const;
-    int get_species_score(int &idx) const;
-    int get_specialty_score(int &idx) const;
-    void set_specialty(vector<int> &&spec_vec);
-    void set_species(vector<int> &&species_vec);
-
+    std::string GetFirstName() const;
+    std::string GetLastName() const;
+    std::string GetFullName() const;
+    int GetSpeciesNum() const;
+    int GetSpecialtyNum() const;
+    int GetSpeciesScore(int &idx) const;
+    int GetSpecialtyScore(int &idx) const;
+    void SetSpecialty(std::vector<int> &&spec_vec);
+    void SetSpecies(std::vector<int> &&species_vec);
 };
 
 #endif

@@ -4,28 +4,30 @@
 #include <unordered_map>
 #include <utility>
 #include <string>
-using namespace std;
 
 class Map {
-    friend ostream &operator<<(ostream &os, const Map &obj);
+    friend std::ostream &operator<<(std::ostream &os, const Map &obj);
 
 private:
-    const int node_num {9};
-    unordered_map<char, pair<int,int>> house_num;
-    unordered_map<int, unordered_map<int,string>> road_name;
-    unordered_map<char, pair<int,int>> rd_vertex;
-    unordered_map<int, unordered_map<int,int>> mp;
-    char addr_road;
-    int addr_house_num;
+    const int node_num_ {9};
+    std::unordered_map<char, std::pair<int,int>> house_num_;
+    std::unordered_map<int, std::unordered_map<int,std::string>> road_name_;
+    std::unordered_map<char, std::pair<int,int>> road_vertex_;
+    std::unordered_map<int, std::unordered_map<int,int>> mp_;
+    char user_addr_road_;
+    int user_addr_house_num_;
 
 public:
     Map();
 
-    void dfs(vector<int> &parent, vector<int> &vertex, int idx);
-    void dijkstra();
-    bool verify_input(char &rd, int &num);
-    string get_rd_name(char &rd);
-
+    void DFS(std::vector<int> &parent, std::vector<int> &vertex, int idx);
+    void Dijkstra(std::vector<std::string> &shortest_path, int &total_dist);
+    bool VerifyInput(char &rd, int &num);
+    std::string GetRoadName(char &rd);
+    std::unordered_map<char, std::pair<int,int>> &GetHouseNum();
+    void SetUserAddrRoad(char &road);
+    void SetUserAddrHouseNum(int &num);
+    
 };
 
 #endif
