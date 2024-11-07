@@ -3,10 +3,20 @@
 - A little project for practicing object-oriented programming, which used encapsulation, polymorphism to build a program that simulates a simple veterinary hospital reservation program.
 - Additionally, Model-View-Controller design pattern was applied.
 
-## UML Diagram
+## Initial Design
 
 <p align=center>
     <img src="img/uml.png" width="1000">
+</p>
+
+## After Refactoring
+
+<p align=center>
+    <img src="img/strategy pattern.png" width="1000">
+</p>
+
+<p align=center>
+    <img src="img/factory method.png" width="1000">
 </p>
 
 ## Getting Started
