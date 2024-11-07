@@ -38,25 +38,21 @@ void MainMenuController::Handle() {
         view_.DisplayMainMenu();
         choice = GetUserChoice();
         view_.ClearTerminal();
-        switch (choice) {
-            case 0: {
-                controller_ptrs_[choice]->Handle();
-                goto END;
-                break;
-            }
-            case 1 ... 9: {
-                controller_ptrs_[choice]->Handle();
-                break;
-            }
-            default:
-                view_.DisplayMessage("Invalid input, please enter again");
-                break;
+
+        if (choice < 0 || choice > 9) {
+            view_.DisplayMessage("Invalid input, please enter again");
         }
+        else if (choice == 0) {
+            controller_ptrs_[choice]->Handle();
+            return;
+        }
+        else {
+            controller_ptrs_[choice]->Handle();
+        }
+        
         view_.DisplayMessage("\nPress enter to back to main menu");
         std::cin.ignore();
         view_.ClearTerminal();
     } while (choice != 0);
 
-END:
-    return;
 }
